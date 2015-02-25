@@ -1,0 +1,18 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1187
+{\fonttbl\f0\froman\fcharset0 Times-Roman;}
+{\colortbl;\red255\green255\blue255;}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\ri720\sa260
+
+\f0\fs24 \cf0 Assume that you are going to write a python program to analyze network traffic report files for anomalies. There are several computers in the network that are monitoring traffic and sending report files back to a central server that your program is running on. Each line in a report file documents information about a particular packet observed. The format of each line in the report file is:\
+time:srcip:srcport:destip:destport:type:flags\
+where time is the time the packet was observed measured in seconds since the start of the day; srcip:srcport is the ip address and port of the sender of the packet; destip:destport is the ip address and port of the recipient of the packet; type is a value of either TCP, UDP or ICMP; and flags is a comma separated list of names of either SYN, ACK, FIN, or RST.\
+Your program will continually run, examining a directory of your choosing for new log file data that it should add to its current information. Every 5 seconds your program should check to see if a new file exists in the directory. If so, you should read the contents and add the information from each entry into several dictionaries that are storing information about network traffic this day. The first dictionary uses a key of the srcip, which each entry is a list of packets sent by that ip. The second dictionary uses a key of the destip, where a list of packets is kept. The last dictionary uses time as key, but rather than using each second as a key, data should be keyed based on the minute the packet occurred (the time in seconds mod 60).\
+Once a new file's data is entered into the dictionaries, a set of tests should be performed to look for weird traffic:\
+1) Ping test - look to see if a particular computer sent or received more than 5 ICMP packets in a given minute. If so, label this as a ping attack, printing either the offending source and its destination ip's in a sorted list, or the attacked destination with the source ip's in a sorted list.\
+2) SYN flood - a normal TCP connection is formed by a sequence of three packets: one packet from a source to a destination with the SYN flag set, a second packet from the destination to the source with the SYN and ACK flags set, and a third packet from the source to the destination with the ACK flag set. The ports of the source and destination are consistent across all 3 packets. A SYN flood attack is characterized by the presence of the first two packets in this sequence without the third. Look for such sequences in the data and print out any ip pairings that have only the first two packets for setting up a connection.\
+3) UDP attack - a particular source ip may send UDP packets to several different ports on a destination machine, most ports do not have active services associated with them, and the destination computer sends an ICMP message back to the source for each such bad port packet. Look for these packet pairings of UDP and ICMP packets between two computers. If two or more such pairings are observed with different ports on the destination, print out the ip pairings involved in this attack.\
+\pard\pardeftab720\ri720
+\cf0 4) Christmas tree attack - any TCP packet with all four flags set at the same time is bad. Scan for such packets and print out the source ip's of such packets in a sorted list.\
+}

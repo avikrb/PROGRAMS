@@ -1,0 +1,12 @@
+From:		avik@unh.com
+To:		donald@unh.newhaven.com
+Date:		02/23/14
+Subject:	Regarding Script assignment
+
+Mr. Donald,
+I am writing you this email as a sample test for the script assignment that 
+checks an email for spams. I hope this email will not be considered a spam. 
+Have a nice day!
+
+Sincerely,
+Avik

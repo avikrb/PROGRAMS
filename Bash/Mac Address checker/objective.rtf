@@ -1,0 +1,18 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1187
+{\fonttbl\f0\froman\fcharset0 Times-Roman;}
+{\colortbl;\red255\green255\blue255;}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\ri720\sa240
+
+\f0\fs24 \cf0 Every network card has a unique MAC address. The proper form of this is a set of six hex digit pairs separated by colons, such as 1A:2B:3C:4D:5E:6F. You will write a short script that should take a MAC address as a command line argument and analyze it. You should first try to validate that the format of the input value is correct: it should be the correct length, have colons in the proper positions, have two digits between colons, and have only hexidecimal digits, no other characters are allowed. If the address is not valid, you should print out specific messages about what is wrong with it. If the address is correctly formatted, then you should print out the manufacturer of the card based on the table below. The first three hex pairs are unique to a manufacturer. If the prefix is not in the table, print that the manufacturer is unknown (these are not the only prefixes assigned to these companies, just the only ones you need to check for). Make sure that you properly comment your code and include a few sample outputs of your programs on test addresses.\
+Prefix - 00:00:0C \'a0 Cisco\
+Prefix - 00:00:43 \'a0 Microtech\
+Prefix - 00:00:97 \'a0 EMC\
+Prefix - 10:40:F3 \'a0 Apple\
+Prefix - 2C:41:38 \'a0 Hewlett Packard\
+Prefix - 00:24:E8 \'a0 Dell\
+Prefix - 00:0D:72 \'a0 2Wire\
+\pard\pardeftab720\ri720
+\cf0 Prefix - 00:10:4B \'a0 3Com\
+}

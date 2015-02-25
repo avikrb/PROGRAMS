@@ -1,0 +1,29 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1187
+{\fonttbl\f0\froman\fcharset0 Times-Roman;}
+{\colortbl;\red255\green255\blue255;}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid1\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{none\}.}{\leveltext\leveltemplateid2\'01.;}{\levelnumbers;}\fi-360\li1440\lin1440 }{\listname ;}\listid1}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\sa240
+
+\f0\fs26 \cf0 You have to implement encryption and decryption with Modified Simplified DES, as discussed in the class and the textbook. The permutations IP, P10, P8, and SW, and the functions f
+\fs18 \dn2 k
+\fs26 \up0 ,F, and the S-box S0 are all as described in the textbook, and can be hardwired into your program. For parts (a) and (b), you use the original S1 box as described in Stallings 3rd edition. However, for part (c), you have to use a modified S-box S1\'92. In the modified S1\'92, the rows 0 and 2 are the same as described for the original S1, but the rows 1 and 3 have been switched. So row 1 is 2,1,0,3 and row 3 is 2,0,1,3. Your program should:
+\fs24 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sa260
+\ls1\ilvl0
+\fs26 \cf0 {\listtext	\'95	}take as input a 8-bit block of plaintext and a 10-bit key. \
+{\listtext	\'95	}Show the following output (please only print what is being asked for, and nothing else): \
+\pard\tx940\tx1440\pardeftab720\li1440\fi-1440\sa260
+\ls1\ilvl1\cf0 {\listtext	.	}(a) \'a0the intermediate result after the SW operation while encypting. \
+{\listtext	.	}(b) \'a0the ciphertext. \
+{\listtext	.	}(c) \'a0the intermediate result after the SW operation while decrypting. \
+{\listtext	.	}(d) \'a0the result of the decryption process. \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sa260
+\ls1\ilvl0\cf0 {\listtext	\'95	}You have to run your programs on the following inputs: \
+\pard\tx940\tx1440\pardeftab720\li1440\fi-1440\sa260
+\ls1\ilvl1\cf0 {\listtext	.	}(a) \'a0with the original S1: the example from the textbook i.e. the plaintext is 10111101 and the key is 1010000010. In this case we know the ciphertext should come out to be 01110101, so this is a good way to check that your program is performing correctly on this input. \
+{\listtext	.	}(b) \'a0with the original S1: the plaintext is 01010100 and the key is 1011110111. \
+{\listtext	.	}(c) \'a0with the modified S1\'92: the plaintext is 01110101 and the key is 1101110011. \
+}

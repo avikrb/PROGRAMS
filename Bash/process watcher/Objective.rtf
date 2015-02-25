@@ -1,0 +1,19 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1187
+{\fonttbl\f0\froman\fcharset0 Times-Roman;}
+{\colortbl;\red255\green255\blue255;}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\ri720\sa260
+
+\f0\fs24 \cf0 The 
+\b ps
+\b0  command is used to display information about the active processes running on a computer. There are various options you can use to display different sets of information about each process. You should read the man page for this command to get familiar with them.\
+You should write a bash script that will filter through the output of a ps command according to various options on the command line to find particular processes. The options your script should handle are:\
+-u username : only display those processes that were started by the indicated user account, the default is to display processes from all users\
+-c percentage : only display those processes that are currently using at least the specified percentage of the CPU, the percentage should be between 1 and 100\
+-m memory : only display those processes that are currently using at least the specified amount of virtual memory, the memory amount should be positive and given in megabytes\
+Following the options of the command is an optional name of a file containing a list of bad process names to search for as the command given to start a process, if the file name is not present do not place any restrictions on which processes are displayed.\
+\pard\pardeftab720\ri720
+\cf0 Make sure your program is properly commented. Include a sample output that shows the normal full output of a ps command, then the filtered output based on using your script.\
+\
+}

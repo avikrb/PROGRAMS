@@ -1,0 +1,118 @@
+!#/bin/bash
+clear
+echo "*************************"
+echo "WELCOME TO EMAIL SPAM CHECKER"
+echo
+echo
+
+function sendercheck
+{
+	sed -n /From:/p $file | cut -f3 > tempfile.txt
+	echo "======DOING THE SENDER CHECK======"
+	echo "Please wait...."
+	sleep 1.0
+	if grep --quiet  -F -f tempfile.txt bademailid.txt
+		then echo "====== SPAM SPAM SPAM SPAM EMAIL ID ======"
+		else echo "====== CONGRATS..!!! EMAIL ID IS NOT A SPAM ======"
+	fi
+	echo "______________________"
+}
+
+
+function subjectcheck
+{
+
+	sed -n /Subject:/p $file | cut -f2 >  tempfile.txt
+	echo "======DOING THE SUBJECT CHECK======"
+	echo "Please wait...."
+	sleep 1.0
+	for word in $(<tempfile.txt)
+	do    	
+		if grep --quiet  -F -i "$word" badsubject.txt	
+		then echo "=====SPAM SPAM SPAM SPAM in the SUBJECT====="
+		exit
+		fi
+	done
+	echo "CONGRATS...!!! NO SPAM FOUND"
+}
+
+
+
+function bodycheck
+{
+
+	echo "Checking the Body of the email for Spam"
+	echo " Please wait ...."
+	sleep 1.0
+	touch thresholdcount.txt
+	egrep -v "From:" $file | egrep -v "To:" | egrep -v "Date:" | egrep -v "Subject:" > tempfile.txt
+	for word in $(<tempfile.txt)
+
+	        do
+
+                  if grep --quiet -woi "$word" badsubject.txt
+	       	  then 
+
+			grep -woi "$word" badsubject.txt >> thresholdcount.txt
+		  fi
+       		done
+
+	uniq -c thresholdcount.txt | cut -d ' ' -f4 > tempfile.txt
+	for word in $(<tempfile.txt)
+	do
+		if [ $word -ge 3 ]
+		then 
+			echo "!!! ======= WATCH OUT SPAM DETECTED ======== !!!"
+			rm thresholdcount.txt
+			exit
+		else
+			continue
+		fi
+	done
+	echo "==== NO SPAM DETECTED BROTHER ==== "  
+	rm thresholdcount.txt
+	
+	
+
+}
+
+
+
+echo
+echo "ENTER YOUR OPTION FOR THE CHECK: "
+echo "=====\"-F\" for SENDER BLACKLIST CHECK ====="
+echo "=====\"-S\" for SUBJECT CHECK ====="
+echo "=====\"-B\" for BODY CHECK ====="
+read option
+echo "Enter a valid email filename: "
+read file
+if [ -e $file ]
+then
+	echo -e "**** File $file exists *****"
+	case $option in
+	[fF] | [-][fF] )
+     		echo "-F was triggered!"
+     		sendercheck
+	;;	
+	[sS] | [-][sS] )
+                echo "-S was triggered!"
+       		subjectcheck
+	;;
+	[bB] | [-][bB] )
+                echo "-B was triggered!"
+        	bodycheck
+	;;
+
+	*)
+      		echo "========= You have entered an Invalid option========="
+     	;;	
+	esac
+
+else
+       
+	echo "*************************"
+	echo -e "File $file doesnt exist!!! "
+
+fi
+echo "*************************"
+
